@@ -5,8 +5,8 @@ language: go
 
 deploy:
   provider: gae
-  project: hellogo-147000
-  keyfile: gce.json
+  project: associate-cloud-engineer-study
+  keyfile: tra.json
   verbosity: debug
   on: master
 
