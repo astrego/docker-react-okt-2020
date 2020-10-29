@@ -1,10 +1,18 @@
 language: generic
-
 services:
   - docker
 
-before_install:
-  - docker build -t astrego/docker-react-okt-2020 -f Dockerfile.dev .
+deploy:
+  provider: gae
+  project: associate-cloud-engineer-study
+  keyfile: tra.json
+  verbosity: debug
+  on:
+    branch: master
 
+before_install:
+  - openssl aes-256-cbc -K $encrypted_62787b06b330_key -iv $encrypted_62787b06b330_iv
+    -in tra.json.enc -out tra.json -d
+  - docker build -t astrego/docker-react-okt-2020 -f Dockerfile.dev .
 script:
   - docker run -e CI=true astrego/docker-react-okt-2020 npm run test
